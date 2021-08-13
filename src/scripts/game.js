@@ -6,7 +6,7 @@ class UnderCooked {
         this.dimensions = { width: canvas.width, height: canvas.height };
         this.character = new Character(this.dimensions, this.ctx);
         this.animate()
-        // this.registerEvents();
+        this.registerEvents();
     }
 
     animate() {
@@ -15,10 +15,18 @@ class UnderCooked {
         requestAnimationFrame(this.animate.bind(this));
     }
 
-    // registerEvents() {
-    //     this.ctx.canvas.addEventListener("keydown", this.character.keyDownHandler)
-    //     this.ctx.canvas.addEventListener("keyup", )
-    // }
+    registerEvents() {
+        window.addEventListener("keydown", this.keyDownHandler.bind(this))
+        window.addEventListener("keyup", this.keyUpHandler.bind(this))
+    }
+
+    keyDownHandler(e) {
+        this.character.keyDown(e);
+    }
+
+    keyUpHandler(e) {
+        this.character.keyUp(e);
+    }
 }
 
 export default UnderCooked;
