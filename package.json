@@ -1,0 +1,38 @@
+{
+  "name": "UnderCooked",
+  "version": "1.0.0",
+  "description": "Background * Undercooked is based on the game Overcooked where the main character will prepare ingredients which will be cooked and served.  * Orders will come in randomly and scores are based on how quickly the food is served after the order is placed.   * Orders will be a variation of either a plain pizza or a pepperoni pizza. * Ingredients will include dough, tomato, cheese, and pepperoni.   * Cooking will involve combining ingredients on a plate and putting it into an oven. * The game will end when the given time is up or if the player's oven catches on fire.",
+  "main": "index.js",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsaintlam/UnderCooked.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexsaintlam/UnderCooked/issues"
+  },
+  "homepage": "https://github.com/alexsaintlam/UnderCooked#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.16.1",
+    "css-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.2.0",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.37.5",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

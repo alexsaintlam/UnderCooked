@@ -13,6 +13,7 @@ In Undercooked, users will be able to:
 * Control animated character within the game
 * Use main character to interact with ingredients and ovens
 * Serve cooked food to score points
+* User will have a timer which will count down.
 
 In addition, this project will include:
 * "How to Play" instructions explaining rules of the game
@@ -28,9 +29,13 @@ Technologies, Libraries, APIs
 * Webpack to bundle JavaScript
 
 Implementation Timeline
-* Friday & Weekend: Setup project with webpack, canvas, get animation of sprites rendered, and begin setting up game logic
-* Monday: Set up game logic such as a timer, scoring system, random order requests, transporting ingredients, and cooking times
-* Tuesday: Finish setting up game logic
-* Wednesday: Finish rendering gameboard
+* Friday & Weekend: Setup project with webpack and canvas, get animation of sprites rendered, have sprites move with keypresses
+* Monday: Create methods for cooking times, have food start cooking with oven
+* Tuesday: Develop random order requests, set up timer that ends game, develop scoring system
+* Wednesday: Add graphics to make game look better
 * Thursday: Upload finished project
+
+Bonus Functionality
+* Incorporate option to change map
+* Incorporate option to include different foods
 
