@@ -9,11 +9,12 @@ Background
 Functionality & MVPs
 
 In Undercooked, users will be able to:
-* Start a new game and reset an existing game
-* Control animated character within the game
-* Use main character to interact with ingredients and ovens
-* Serve cooked food to score points
-* User will have a timer which will count down.
+* start a new game and reset an existing game
+* move animated character within the map
+* use character to interact with ingredients and ovens
+* assemble pizzas that match ingredients of incoming orders
+* serve cooked pizzas to score points
+* view score when timer is done and game is over
 
 In addition, this project will include:
 * "How to Play" instructions explaining rules of the game
