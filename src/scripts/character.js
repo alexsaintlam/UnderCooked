@@ -41,7 +41,6 @@ class Character {
 
     keyDown(e) {
         this.key[e.keyCode] = true;
-        console.log(this.key);
         this.sprite.moving = true;
     }
 
@@ -51,19 +50,19 @@ class Character {
     }
 
     movePlayer() {
-        if (this.key[68]) {
+        if (this.key[68] && this.sprite.x < this.x - this.sprite.height) {
             this.sprite.x += this.sprite.speed
             this.sprite.frameY = 2 
             this.sprite.moving = true }
-        if (this.key[65]) {
+        if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed
             this.sprite.frameY = 1
             this.sprite.moving = true }
-        if (this.key[87]) {
+        if (this.key[87] && this.sprite.y > 0) {
             this.sprite.y -= this.sprite.speed
             this.sprite.frameY = 3
             this.sprite.moving = true }
-        if (this.key[83]) {
+        if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed
             this.sprite.frameY = 0
             this.sprite.moving = true }
