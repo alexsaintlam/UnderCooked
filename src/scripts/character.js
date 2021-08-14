@@ -14,7 +14,7 @@ class Character {
             height: 56,
             frameX: 0,
             frameY: 0,
-            speed: 4,
+            speed: 8,
             moving: false
         };
 
@@ -33,7 +33,6 @@ class Character {
             this.sprite.width, this.sprite.height);  
         this.movePlayer();
         this.playerFrame();
-        
     }
 
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
@@ -43,29 +42,35 @@ class Character {
     keyDown(e) {
         this.key[e.keyCode] = true;
         console.log(this.key);
+        this.sprite.moving = true;
     }
 
     keyUp(e) {
         delete this.key[e.keyCode];
+        this.sprite.moving = false;
     }
 
     movePlayer() {
         if (this.key[68]) {
             this.sprite.x += this.sprite.speed
-            this.sprite.frameY = 2 }
+            this.sprite.frameY = 2 
+            this.sprite.moving = true }
         if (this.key[65]) {
             this.sprite.x -= this.sprite.speed
-            this.sprite.frameY = 1 }
+            this.sprite.frameY = 1
+            this.sprite.moving = true }
         if (this.key[87]) {
             this.sprite.y -= this.sprite.speed
-            this.sprite.frameY = 3 }
+            this.sprite.frameY = 3
+            this.sprite.moving = true }
         if (this.key[83]) {
             this.sprite.y += this.sprite.speed
-            this.sprite.frameY = 0 }
+            this.sprite.frameY = 0
+            this.sprite.moving = true }
     }
 
     playerFrame() {
-        if (this.sprite.frameX < 3) {
+        if (this.sprite.frameX < 3 && this.sprite.moving) {
             this.sprite.frameX += 1
         } else {
             this.sprite.frameX = 0;
