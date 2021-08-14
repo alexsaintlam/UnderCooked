@@ -1,4 +1,4 @@
-import player from "../images/hulk.png";
+import player from "../images/chef.png";
 
 class Character {
     constructor(dimensions, ctx) {
@@ -10,24 +10,25 @@ class Character {
         this.sprite = {
             x: 0,
             y: 0,
-            width: 40,
-            height: 56,
+            width: 16,
+            height: 32,
             frameX: 0,
             frameY: 0,
             speed: 8,
-            moving: false
+            startPos: 0
         };
+
+        this.pickedStatus = false;
+        this.key = [];
 
         this.playerSprite = new Image();
         this.playerSprite.src = player;
-
-        this.key = [];
     }
 
     animate() {
         this.drawSprite(this.playerSprite, 
-            this.sprite.width * this.sprite.frameX,
-            this.sprite.height * this.sprite.frameY, 
+            (this.sprite.width * this.sprite.frameX) + this.sprite.startPos, 
+            this.sprite.height * this.sprite.frameY,
             this.sprite.width, this.sprite.height, 
             this.sprite.x, this.sprite.y, 
             this.sprite.width, this.sprite.height);  
@@ -41,38 +42,45 @@ class Character {
 
     keyDown(e) {
         this.key[e.keyCode] = true;
-        this.sprite.moving = true;
     }
 
     keyUp(e) {
         delete this.key[e.keyCode];
-        this.sprite.moving = false;
+        this.sprite.frameY = 1;
     }
 
     movePlayer() {
         if (this.key[68] && this.sprite.x < this.x - this.sprite.height) {
             this.sprite.x += this.sprite.speed
-            this.sprite.frameY = 2 
-            this.sprite.moving = true }
+            this.sprite.startPos = 0;
+            this.sprite.frameY = 2 }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed
-            this.sprite.frameY = 1
-            this.sprite.moving = true }
+            this.sprite.startPos = 192;
+            this.sprite.frameY = 2 }
         if (this.key[87] && this.sprite.y > 0) {
             this.sprite.y -= this.sprite.speed
-            this.sprite.frameY = 3
-            this.sprite.moving = true }
+            this.sprite.startPos = 96;
+            this.sprite.frameY = 2 }
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed
-            this.sprite.frameY = 0
-            this.sprite.moving = true }
+            this.sprite.startPos = 288;
+            this.sprite.frameY = 2 }
     }
 
     playerFrame() {
-        if (this.sprite.frameX < 3 && this.sprite.moving) {
+        if (this.sprite.frameX < 5) {
             this.sprite.frameX += 1
         } else {
             this.sprite.frameX = 0;
+        }
+    }
+
+    pickedUp(e) {
+        if (e.keyCode === 32 && this.pickedStatus === false) {
+            this.pickedStatus = true;
+        } else if (e.keyCode === 32 && this.pickedStatus === true) {
+            this.pickedStatus = false;
         }
     }
 }

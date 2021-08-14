@@ -1,6 +1,6 @@
-import tomatoImg from "../images/tomato.png";
+import pepperoniImg from "/src/images/pepperoni.png";
 
-class Tomato {
+class Pepperoni {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
@@ -8,8 +8,8 @@ class Tomato {
         this.y = this.dimensions.height;  
 
         this.sprite = {
-            x: 300,
-            y: 100,
+            x: 250,
+            y: 170,
             width: 16,
             height: 16,
             speed: 8,
@@ -18,12 +18,12 @@ class Tomato {
         this.pickedStatus = false;
         this.key = [];
 
-        this.tomatoSprite = new Image();
-        this.tomatoSprite.src = tomatoImg;
+        this.pepperoniSprite = new Image();
+        this.pepperoniSprite.src = pepperoniImg;
     }
 
     animate() {
-        this.drawSprite(this.tomatoSprite, 0, 0, 
+        this.drawSprite(this.pepperoniSprite, 0, 0, 
             this.sprite.width, this.sprite.height, 
             this.sprite.x, this.sprite.y, 
             this.sprite.width, this.sprite.height);  
@@ -62,4 +62,4 @@ class Tomato {
     }
 }
 
-export default Tomato;
+export default Pepperoni;

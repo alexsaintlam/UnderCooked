@@ -1,6 +1,6 @@
-import cheeseImg from "../images/cheese.png";
+import breadImg from "/src/images/bread.png";
 
-class Cheese {
+class Bread {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
@@ -9,7 +9,7 @@ class Cheese {
 
         this.sprite = {
             x: 300,
-            y: 30,
+            y: 170,
             width: 16,
             height: 16,
             speed: 8,
@@ -18,12 +18,12 @@ class Cheese {
         this.pickedStatus = false;
         this.key = [];
 
-        this.cheeseSprite = new Image();
-        this.cheeseSprite.src = cheeseImg;
+        this.breadSprite = new Image();
+        this.breadSprite.src = breadImg;
     }
 
     animate() {
-        this.drawSprite(this.cheeseSprite, 0, 0, 
+        this.drawSprite(this.breadSprite, 0, 0, 
             this.sprite.width, this.sprite.height, 
             this.sprite.x, this.sprite.y, 
             this.sprite.width, this.sprite.height);  
@@ -62,4 +62,4 @@ class Cheese {
     }
 }
 
-export default Cheese;
+export default Bread;
