@@ -8,8 +8,8 @@ class Character {
         this.y = this.dimensions.height;
 
         this.sprite = {
-            x: 0,
-            y: 0,
+            x: 50,
+            y: 50,
             width: 16,
             height: 32,
             frameX: 0,

@@ -1,48 +1,43 @@
-import tomatoImg from "/src/images/tomato.png";
+import angryImg from "../images/angry1.png";
 
-class Tomato {
+class Angry {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height;  
+        this.y = this.dimensions.height;
 
         this.sprite = {
-            x: 200,
-            y: 170,
+            x: 64,
+            y: 40,
             width: 16,
-            height: 16,
+            height: 19,
+            frameX: 0,
             speed: 8,
         };
 
-        this.cooked = false;
-        this.pickedStatus = false;
-        this.pickedCount = 0;
-        this.visible = true;
+        this.getMad = false;
         this.key = [];
 
-        this.tomatoSprite = new Image();
-        this.tomatoSprite.src = tomatoImg;
+        this.angrySprite = new Image();
+        this.angrySprite.src = angryImg;
     }
 
     animate() {
-        this.drawSprite(this.tomatoSprite, 0, 0, 
+        this.drawSprite(this.angrySprite, 
+            this.sprite.width * this.sprite.frameX, 0,
             this.sprite.width, this.sprite.height, 
             this.sprite.x, this.sprite.y, 
             this.sprite.width, this.sprite.height);  
         this.movePlayer();
+
+        if (this.getMad) {
+            this.playerFrame();
+        }
     }
 
     drawSprite(img, sX, sY, sW, sH, dX, dY, dW, dH) {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
-    }
-
-    pickedUp(e) {
-        if (e.keyCode === 32 && this.pickedStatus === false) {
-            this.pickedStatus = true;
-        } else if (e.keyCode === 32 && this.pickedStatus === true) {
-            this.pickedStatus = false;
-        }
     }
 
     keyDown(e) {
@@ -63,6 +58,22 @@ class Tomato {
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed }
     }
+
+    playerFrame() {
+        if (this.sprite.frameX < 4) {
+            this.sprite.frameX += 1
+        } else {
+            this.sprite.frameX = 0;
+        }
+    }
+
+    youMad() {
+        let that = this;
+        this.getMad = true;
+        setTimeout(function() {
+            that.frameX = -1;
+            that.getMad = false;}, 3000);
+    }
 }
 
-export default Tomato;
+export default Angry;

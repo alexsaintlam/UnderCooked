@@ -19,8 +19,7 @@ class Plate {
         this.pickedStatus = false;
         this.key = [];
         this.contents = [];
-        this.cooking = false;
-        this.cooked = false;
+        this.visible = true;
 
 
         this.plateSprite = new Image();

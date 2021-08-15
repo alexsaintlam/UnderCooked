@@ -1,6 +1,12 @@
 class Utility {
     constructor(){}
 
+    visibleAnimate(obj) {
+        if (obj.visible === true) {
+            obj.animate();
+        }
+    }
+
     plateAnimate(plate, ing, str) {
         if (!plate.contents.includes(str)) {
             ing.animate();
@@ -18,13 +24,14 @@ class Utility {
         }
     }
 
-    plateCollision(char, ing, plate, ingStr, e) {
-        if (this.collision(ing, plate)) {
+    plateCollision(char, ing, ingCount, plate, ingStr, e) {
+        if (this.collision(ing[ingCount], plate)) {
             plate.placedContent(e, ingStr);
             if (plate.placedContent && plate.contents.includes(ingStr)) {
                 char.pickedStatus = false;
-                ing.sprite.x = 0;
-                ing.sprite.y = 0;
+                ing[ingCount].visible = false;
+                ing[ingCount].sprite.x = 0;
+                ing[ingCount].sprite.y = 0;
             }
         }
     }
@@ -37,12 +44,14 @@ class Utility {
                 ingArr[counter].keyDown(e);
                 ingArr[counter].pickedCount += 1
             }
-        } else if (this.collision(char, ingArr[counter + 1]) && ingArr[counter].pickedCount > 0) {
-            char.pickedUp(e);
-            ingArr[counter + 1].pickedUp(e);
-            if (ingArr[counter + 1].pickedStatus === true && char.pickedStatus === true) {
-                ingArr[counter + 1].keyDown(e);
-                ingArr[counter + 1].pickedCount += 1
+        } else if (ingArr[counter + 1]) {
+            if (this.collision(char, ingArr[counter + 1]) && ingArr[counter].pickedCount > 0) {
+                char.pickedUp(e);
+                ingArr[counter + 1].pickedUp(e);
+                if (ingArr[counter + 1].pickedStatus === true && char.pickedStatus === true) {
+                    ingArr[counter + 1].keyDown(e);
+                    ingArr[counter + 1].pickedCount += 1
+                }
             }
         }
     }
@@ -50,32 +59,34 @@ class Utility {
     keyUpCol(char, ingArr, counter, e) {
         if (this.collision(char, ingArr[counter])) {
             ingArr[counter].keyUp(e);
-        } else if (this.collision(char, ingArr[counter + 1])) {
-            ingArr[counter + 1].keyUp(e);
-        }
-    }
-
-    cookedDownCol(char, plateArr, e) {
-        for (let i = 0; i < plateArr.length; i++) {
-            let cookedPlate = plateArr[i];
-            if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
-                char.pickedUp(e);
-                cookedPlate.pickedUp(e);
-                if (cookedPlate.pickedStatus === true && char.pickedStatus === true) {
-                    cookedPlate.keyDown(e);
-                }
+        } else if (ingArr[counter + 1]) {
+            if (this.collision(char, ingArr[counter + 1])) {
+                ingArr[counter + 1].keyUp(e);
             }
         }
     }
 
-    cookedUpCol(char, plateArr, e) {
-        for (let i = 0; i < plateArr.length; i++) {
-            let cookedPlate = plateArr[i];
-            if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
-                cookedPlate.keyUp(e);
-            }
-        }
-    }
+    // cookedDownCol(char, plateArr, e) {
+    //     for (let i = 0; i < plateArr.length; i++) {
+    //         let cookedPlate = plateArr[i];
+    //         if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
+    //             char.pickedUp(e);
+    //             cookedPlate.pickedUp(e);
+    //             if (cookedPlate.pickedStatus === true && char.pickedStatus === true) {
+    //                 cookedPlate.keyDown(e);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // cookedUpCol(char, plateArr, e) {
+    //     for (let i = 0; i < plateArr.length; i++) {
+    //         let cookedPlate = plateArr[i];
+    //         if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
+    //             cookedPlate.keyUp(e);
+    //         }
+    //     }
+    // }
 }
 
 export default Utility;

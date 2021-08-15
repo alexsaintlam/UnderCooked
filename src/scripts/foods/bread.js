@@ -16,6 +16,8 @@ class Bread {
         };
 
         this.pickedStatus = false;
+        this.pickedCount = 0;
+        this.visible = true;
         this.key = [];
 
         this.breadSprite = new Image();

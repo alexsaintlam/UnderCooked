@@ -1,6 +1,6 @@
-import tomatoImg from "/src/images/tomato.png";
+import pizzaImg from "/src/images/plate2.png";
 
-class Tomato {
+class Pizza {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
@@ -8,25 +8,25 @@ class Tomato {
         this.y = this.dimensions.height;  
 
         this.sprite = {
-            x: 200,
-            y: 170,
-            width: 16,
-            height: 16,
+            x: 350,
+            y: 50,
+            width: 14,
+            height: 13,
             speed: 8,
         };
 
-        this.cooked = false;
+        // this.cooked = false;
         this.pickedStatus = false;
         this.pickedCount = 0;
-        this.visible = true;
+        this.visible = false;
         this.key = [];
 
-        this.tomatoSprite = new Image();
-        this.tomatoSprite.src = tomatoImg;
+        this.pizzaSprite = new Image();
+        this.pizzaSprite.src = pizzaImg;
     }
 
     animate() {
-        this.drawSprite(this.tomatoSprite, 0, 0, 
+        this.drawSprite(this.pizzaSprite, 0, 0, 
             this.sprite.width, this.sprite.height, 
             this.sprite.x, this.sprite.y, 
             this.sprite.width, this.sprite.height);  
@@ -65,4 +65,4 @@ class Tomato {
     }
 }
 
-export default Tomato;
+export default Pizza;

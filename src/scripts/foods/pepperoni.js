@@ -16,6 +16,8 @@ class Pepperoni {
         };
 
         this.pickedStatus = false;
+        this.pickedCount = 0;
+        this.visible = true;
         this.key = [];
 
         this.pepperoniSprite = new Image();
