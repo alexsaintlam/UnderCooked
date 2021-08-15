@@ -16,6 +16,7 @@ class Cheese {
         };
 
         this.pickedStatus = false;
+        this.pickedCount = 0;
         this.key = [];
 
         this.cheeseSprite = new Image();
