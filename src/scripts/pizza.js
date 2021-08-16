@@ -9,13 +9,13 @@ class Pizza {
 
         this.sprite = {
             x: 145,
-            y: 26,
+            y: 40,
             width: 14,
             height: 13,
             speed: 8,
         };
 
-        // this.cooked = false;
+        this.type = "plain";
         this.pickedStatus = false;
         this.pickedCount = 0;
         this.visible = false;

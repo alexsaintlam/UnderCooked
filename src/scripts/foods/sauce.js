@@ -5,11 +5,11 @@ class Sauce {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height - 25;  
+        this.y = this.dimensions.height - 16;  
 
         this.sprite = {
             x: 78,
-            y: 26,
+            y: 40,
             width: 12,
             height: 8,
             speed: 8,
@@ -57,7 +57,7 @@ class Sauce {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 30) {
+        if (this.key[87] && this.sprite.y > 44) {
             this.sprite.y -= this.sprite.speed }
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed }

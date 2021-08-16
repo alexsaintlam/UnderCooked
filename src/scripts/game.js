@@ -12,6 +12,7 @@ import Pizza from "./pizza";
 import Sauce from "./foods/sauce";
 import Angry from "./angry";
 import Checkout from "./checkout";
+import Order from "./order";
 
 class UnderCooked {
     constructor(canvas) {
@@ -24,7 +25,6 @@ class UnderCooked {
         this.level = new Level(this.dimensions, this.ctx);
         this.angry = new Angry(this.dimensions, this.ctx);
         this.checkout = new Checkout(this.dimensions, this.ctx);
-        // this.pizza = new Pizza(this.dimensions, this.ctx);
         this.cheeseArr = [];
         this.tomatoArr = [];
         this.pepperoniArr = [];
@@ -32,6 +32,7 @@ class UnderCooked {
         this.plateArr = [];
         this.pizzaArr = [];
         this.sauceArr = [];
+        this.orderArr = [new Order(this.dimensions, this.ctx)];
         this.cheeseCount = 0;
         this.tomatoCount = 0;
         this.pepperoniCount = 0;
@@ -39,6 +40,7 @@ class UnderCooked {
         this.plateCount = 0;
         this.pizzaCount = 0;
         this.sauceCount = 0;
+        this.time = 60;
 
         for (let i = 0; i < 5; i++) {
             this.cheeseArr.push(new Cheese(this.dimensions, this.ctx)); 
@@ -54,9 +56,12 @@ class UnderCooked {
         this.now = "";
         this.then = "";
         this.elapsed = "";
-        
+        this.gameStatus = true;
         this.startAnimate(13);
         this.registerEvents();
+        this.score();
+        setInterval(this.timer.bind(this), 1000);
+        setInterval(this.createOrder.bind(this), 8000);
     }
 
     startAnimate(fps) {
@@ -67,6 +72,14 @@ class UnderCooked {
     }
 
     animate() {
+        if (!this.gameStatus) {
+            if (window.confirm(`You scored ${document.getElementById("score").innerText} points!  Press Ok to restart.`)) {
+                location.reload();
+            }
+        }
+
+        if (this.gameStatus) {
+
         requestAnimationFrame(this.animate.bind(this));
         this.now = Date.now();
         this.elapsed = this.now - this.then;
@@ -74,6 +87,7 @@ class UnderCooked {
         if (this.elapsed > this.fpsInterval) {
             this.then = this.now - (this.elapsed % this.fpsInterval);
             this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
+            document.getElementById("timer").innerText = this.time;
             this.level.animate();
             this.stove.animate();
             this.oven.animate();
@@ -90,6 +104,8 @@ class UnderCooked {
             this.utility.visibleAnimate(this.tomatoArr[this.tomatoCount]);
             this.utility.visibleAnimate(this.pepperoniArr[this.pepperoniCount]);
             this.utility.visibleAnimate(this.breadArr[this.breadCount]);
+            this.utility.orderAnimate(this.orderArr);
+            this.utility.orderColReset(this.orderArr);
 
             if (this.pizzaArr.length > 0) {
                 this.utility.visibleAnimate(this.pizzaArr[this.pizzaCount]);
@@ -98,7 +114,10 @@ class UnderCooked {
             if (this.sauceArr.length > 0) {
                 this.utility.visibleAnimate(this.sauceArr[this.sauceCount]);
             }
+
+
         }
+    }
     }
 
     registerEvents() {
@@ -153,13 +172,12 @@ class UnderCooked {
             }
         }
 
-
         this.utility.plateCollision(this.character, this.cheeseArr, this.cheeseCount, this.plateArr[this.plateCount], "cheese", e);
         this.utility.plateCollision(this.character, this.pepperoniArr, this.pepperoniCount, this.plateArr[this.plateCount], "pepperoni", e);
         this.utility.plateCollision(this.character, this.breadArr, this.breadCount, this.plateArr[this.plateCount], "bread", e)
 
         if (this.sauceArr.length > 0) {
-            this.utility.plateCollision(this.character, this.sauceArr, this.sauceCount, this.plateArr[this.plateCount], "sauce", e)
+            this.utility.plateCollision(this.character, this.sauceArr, this.sauceCount, this.plateArr[this.plateCount], "sauce", e);
         }
 
         if (this.utility.collision(this.oven, this.plateArr[this.plateCount])) {  
@@ -180,7 +198,7 @@ class UnderCooked {
                             that.pizzaArr.push(new Pizza(that.dimensions, that.ctx));
                             that.pizzaArr[that.pizzaArr.length -1].visible = true;
                             that.oven.cookingItems.shift();
-                            }, 10000);
+                            }, 7000);
                     } else {
                         this.angry.youMad();
                     }
@@ -213,6 +231,8 @@ class UnderCooked {
         if (this.pizzaArr.length > 0) {
             if (this.utility.collision(this.pizzaArr[this.pizzaCount], this.checkout)) {
                 if (this.checkout.getPaid(e)) {
+                    this.orderArr.shift();
+                    this.score();
                     this.character.pickedStatus = false;
                     this.pizzaArr[this.pizzaCount].sprite.x = 0;
                     this.pizzaArr[this.pizzaCount].sprite.y = 0;
@@ -237,6 +257,28 @@ class UnderCooked {
 
         if (this.sauceArr.length > 0) {
             this.utility.keyUpCol(this.character, this.sauceArr, this.sauceCount, e);
+        }
+    }
+
+    score() {
+        const sum = this.checkout.scoreArr.reduce((acc, ele) => 
+            {return acc + ele}, 0);
+
+        const scoreId = document.getElementById("score");
+        scoreId.innerText = sum;
+    }
+
+    timer() {
+        if (this.time > 0) {
+            this.time -= 1;
+        } else if (this.time < 1) {
+            this.gameStatus = false; 
+        }
+    }
+
+    createOrder() {
+        if (this.orderArr.length < 5) {
+            this.orderArr.push(new Order(this.dimensions, this.ctx));
         }
     }
 }

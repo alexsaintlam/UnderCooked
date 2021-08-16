@@ -5,11 +5,11 @@ class Tomato {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height - 25;  
+        this.y = this.dimensions.height - 16;  
 
         this.sprite = {
             x: 87,
-            y: 90,
+            y: 104,
             width: 16,
             height: 16,
             speed: 8,
@@ -58,7 +58,7 @@ class Tomato {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 30) {
+        if (this.key[87] && this.sprite.y > 44) {
             this.sprite.y -= this.sprite.speed }
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed }

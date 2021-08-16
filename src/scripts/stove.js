@@ -7,7 +7,7 @@ class Stove {
 
         this.sprite = {
             x: 56,
-            y: 23,
+            y: 37,
             width: 17,
             height: 27,
             frameX: 1

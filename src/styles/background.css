@@ -1,6 +1,6 @@
 #canvas1 {
-    width: 171;
-    height: 119;
+    width: 172;
+    height: 133;
     border: 1px solid black;
     zoom: 300%
 }
@@ -9,4 +9,16 @@ body {
     display:grid;
     place-items: center;
     min-height: 90vh;
+}
+
+#score {
+    position: absolute;
+    top: 80vh;
+    left: 50vh;
+}
+
+#timer {
+    position: absolute;
+    top: 230vh;
+    left: 880vh;
 }

@@ -2,8 +2,8 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/styles/background.css ***!
   \************************************************************************************************************************************************/
 #canvas1 {
-  width: 171;
-  height: 119;
+  width: 172;
+  height: 133;
   border: 1px solid black;
   zoom: 300%;
 }
@@ -12,6 +12,18 @@ body {
   display: grid;
   place-items: center;
   min-height: 90vh;
+}
+
+#score {
+  position: absolute;
+  top: 80vh;
+  left: 50vh;
+}
+
+#timer {
+  position: absolute;
+  top: 230vh;
+  left: 880vh;
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!

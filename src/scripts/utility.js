@@ -32,6 +32,7 @@ class Utility {
                 ing[ingCount].visible = false;
                 ing[ingCount].sprite.x = 0;
                 ing[ingCount].sprite.y = 0;
+                ing.shift();
             }
         }
     }
@@ -56,12 +57,53 @@ class Utility {
         }
     }
 
+    orderCol(order1, order2) {
+        if (this.collision(order1, order2)) {
+            order2.blocked = true;
+        }
+    }
+
+    orderColReset(orderArr) {
+        if (orderArr[0].sprite.x > 1) {
+            for (let i = 0; i < orderArr.length; i++) {
+                let order = orderArr[i];
+                order.blocked = false;
+            }
+        }
+    }
+
     keyUpCol(char, ingArr, counter, e) {
         if (this.collision(char, ingArr[counter])) {
             ingArr[counter].keyUp(e);
         } else if (ingArr[counter + 1]) {
             if (this.collision(char, ingArr[counter + 1])) {
                 ingArr[counter + 1].keyUp(e);
+            }
+        }
+    }
+
+    orderCheck(pizza, orderArr) {
+        for (let i = 0; i < orderArr.length; i++) {
+            let order = orderArr[i];
+            if (pizza.type === order.type) {
+                orderArr.splice(i, 1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    orderAnimate(orderArr) {
+        if (orderArr.length > 0) {
+            orderArr[0].animate();
+        }
+
+        for (let i = 1; i < orderArr.length; i++) {
+            orderArr[i].animate();
+
+            if (orderArr.length > 1) {
+                this.orderCol(orderArr[i - 1], orderArr[i]);
             }
         }
     }

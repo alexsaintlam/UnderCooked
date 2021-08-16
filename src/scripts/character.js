@@ -9,7 +9,7 @@ class Character {
 
         this.sprite = {
             x: 50,
-            y: 50,
+            y: 67,
             width: 16,
             height: 32,
             frameX: 0,
@@ -58,7 +58,7 @@ class Character {
             this.sprite.x -= this.sprite.speed
             this.sprite.startPos = 192;
             this.sprite.frameY = 2 }
-        if (this.key[87] && this.sprite.y > 25) {
+        if (this.key[87] && this.sprite.y > 39) {
             this.sprite.y -= this.sprite.speed
             this.sprite.startPos = 96;
             this.sprite.frameY = 2 }

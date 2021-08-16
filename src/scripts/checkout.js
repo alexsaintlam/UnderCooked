@@ -7,7 +7,7 @@ class Checkout {
 
         this.sprite = {
             x: 156,
-            y: 97,
+            y: 110,
             width: 17,
             height: 16,
             frameY: 0
