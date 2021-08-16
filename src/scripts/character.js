@@ -4,8 +4,8 @@ class Character {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
-        this.x = this.dimensions.width + 15;
-        this.y = this.dimensions.height - 25;
+        this.x = this.dimensions.width;
+        this.y = this.dimensions.height;
 
         this.sprite = {
             x: 50,
@@ -50,7 +50,7 @@ class Character {
     }
 
     movePlayer() {
-        if (this.key[68] && this.sprite.x < this.x - this.sprite.height) {
+        if (this.key[68] && this.sprite.x < this.x - this.sprite.width) {
             this.sprite.x += this.sprite.speed
             this.sprite.startPos = 0;
             this.sprite.frameY = 2 }
@@ -58,11 +58,11 @@ class Character {
             this.sprite.x -= this.sprite.speed
             this.sprite.startPos = 192;
             this.sprite.frameY = 2 }
-        if (this.key[87] && this.sprite.y > 39) {
+        if (this.key[87] && this.sprite.y > 37) {
             this.sprite.y -= this.sprite.speed
             this.sprite.startPos = 96;
             this.sprite.frameY = 2 }
-        if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
+        if (this.key[83] && this.sprite.y < this.y - this.sprite.height - 24) {
             this.sprite.y += this.sprite.speed
             this.sprite.startPos = 288;
             this.sprite.frameY = 2 }

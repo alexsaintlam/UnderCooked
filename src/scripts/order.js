@@ -9,7 +9,7 @@ class Order {
         this.y = this.dimensions.height - 25;
 
         this.sprite = {
-            x: 75,
+            x: 68,
             y: 0,
             width: 16,
             height: 20,

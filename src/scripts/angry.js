@@ -8,8 +8,8 @@ class Angry {
         this.y = this.dimensions.height;
 
         this.sprite = {
-            x: 64,
-            y: 40,
+            x: 62,
+            y: 60,
             width: 16,
             height: 19,
             frameX: 0,
@@ -49,13 +49,13 @@ class Angry {
     }
 
     movePlayer() {
-        if (this.key[68] && this.sprite.x < this.x - this.sprite.height) {
+        if (this.key[68] && this.sprite.x < this.x - this.sprite.width) {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 0) {
+        if (this.key[87] && this.sprite.y > 34) {
             this.sprite.y -= this.sprite.speed }
-        if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
+        if (this.key[83] && this.sprite.y < this.y - this.sprite.height - 45) {
             this.sprite.y += this.sprite.speed }
     }
 

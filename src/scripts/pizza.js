@@ -5,11 +5,11 @@ class Pizza {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height - 20;  
+        this.y = this.dimensions.height;  
 
         this.sprite = {
             x: 145,
-            y: 40,
+            y: 43,
             width: 14,
             height: 13,
             speed: 8,
@@ -58,9 +58,9 @@ class Pizza {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 30) {
+        if (this.key[87] && this.sprite.y > 44) {
             this.sprite.y -= this.sprite.speed }
-        if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
+        if (this.key[83] && this.sprite.y < this.y - this.sprite.height - 20) {
             this.sprite.y += this.sprite.speed }
     }
 }

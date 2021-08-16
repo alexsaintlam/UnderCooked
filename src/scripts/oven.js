@@ -32,10 +32,21 @@ class Oven {
         this.ctx.drawImage(img, sX, sY, sW, sH, dX, dY, dW, dH);
     }
 
-    isCooking(e) {
-        if (e.keyCode === 32 && this.cookingItems.length < 2) {
-            this.cookingItems.push("pizza");
-            return true;
+    isCooking(e, plate) {
+        if (e.keyCode === 32 && this.cookingItems.length < 2 &&
+            plate.contents.includes("cheese") &&
+            plate.contents.includes("bread") &&
+            plate.contents.includes("sauce") &&
+            plate.contents.includes("pepperoni")) {
+                this.cookingItems.push("pep");
+                return true;
+        } else if (e.keyCode === 32 && this.cookingItems.length < 2 &&
+            plate.contents.includes("cheese") &&
+            plate.contents.includes("bread") &&
+            plate.contents.includes("sauce") &&
+            !plate.contents.includes("pepperoni")) {
+                this.cookingItems.push("plain");
+                return true;
         } else {
             return false;
         }

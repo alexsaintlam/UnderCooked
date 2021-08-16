@@ -13,12 +13,12 @@ body {
 
 #score {
     position: absolute;
-    top: 80vh;
-    left: 50vh;
+    top: 24.3%;
+    left: 61.8%;
 }
 
 #timer {
     position: absolute;
-    top: 230vh;
-    left: 880vh;
+    top: 24.3%;
+    left: 54%;
 }

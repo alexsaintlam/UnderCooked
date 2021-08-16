@@ -94,7 +94,7 @@ class Utility {
         return false;
     }
 
-    orderAnimate(orderArr) {
+    arrAnimate(orderArr) {
         if (orderArr.length > 0) {
             orderArr[0].animate();
         }
