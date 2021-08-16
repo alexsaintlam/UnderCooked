@@ -6,8 +6,8 @@ class Stove {
         this.dimensions = dimensions;
 
         this.sprite = {
-            x: 200,
-            y: 37,
+            x: 56,
+            y: 23,
             width: 17,
             height: 27,
             frameX: 1

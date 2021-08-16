@@ -5,11 +5,11 @@ class Pepperoni {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height;  
+        this.y = this.dimensions.height - 25;  
 
         this.sprite = {
-            x: 250,
-            y: 170,
+            x: 118,
+            y: 90,
             width: 16,
             height: 16,
             speed: 8,
@@ -57,7 +57,7 @@ class Pepperoni {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 0) {
+        if (this.key[87] && this.sprite.y > 30) {
             this.sprite.y -= this.sprite.speed }
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed }

@@ -71,7 +71,7 @@ class Angry {
         let that = this;
         this.getMad = true;
         setTimeout(function() {
-            that.frameX = -1;
+            that.sprite.frameX = 0;
             that.getMad = false;}, 3000);
     }
 }

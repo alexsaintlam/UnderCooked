@@ -6,8 +6,8 @@ class Oven {
         this.dimensions = dimensions;
 
         this.sprite = {
-            x: 250,
-            y: 20,
+            x: 94,
+            y: 7,
             width: 33,
             height: 42,
             frameX: 0

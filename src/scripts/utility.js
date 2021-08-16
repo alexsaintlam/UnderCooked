@@ -65,28 +65,6 @@ class Utility {
             }
         }
     }
-
-    // cookedDownCol(char, plateArr, e) {
-    //     for (let i = 0; i < plateArr.length; i++) {
-    //         let cookedPlate = plateArr[i];
-    //         if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
-    //             char.pickedUp(e);
-    //             cookedPlate.pickedUp(e);
-    //             if (cookedPlate.pickedStatus === true && char.pickedStatus === true) {
-    //                 cookedPlate.keyDown(e);
-    //             }
-    //         }
-    //     }
-    // }
-
-    // cookedUpCol(char, plateArr, e) {
-    //     for (let i = 0; i < plateArr.length; i++) {
-    //         let cookedPlate = plateArr[i];
-    //         if (this.collision(char, cookedPlate) && cookedPlate.cooked) {
-    //             cookedPlate.keyUp(e);
-    //         }
-    //     }
-    // }
 }
 
 export default Utility;

@@ -1,15 +1,15 @@
-import plateImg from "../images/plate.png";
+import plateImg from "../images/plates2.png";
 
 class Plate {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
-        this.y = this.dimensions.height;  
+        this.y = this.dimensions.height - 25;  
 
         this.sprite = {
-            x: 150,
-            y: 50,
+            x: 20,
+            y: 26,
             width: 14,
             height: 13,
             frameX: 0,
@@ -21,10 +21,8 @@ class Plate {
         this.contents = [];
         this.visible = true;
 
-
         this.plateSprite = new Image();
-        this.plateSprite.src = plateImg;
-                                
+        this.plateSprite.src = plateImg;           
     }
 
     animate() {
@@ -62,7 +60,7 @@ class Plate {
             this.sprite.x += this.sprite.speed }
         if (this.key[65] && this.sprite.x > 0) {
             this.sprite.x -= this.sprite.speed }
-        if (this.key[87] && this.sprite.y > 0) {
+        if (this.key[87] && this.sprite.y > 30) {
             this.sprite.y -= this.sprite.speed }
         if (this.key[83] && this.sprite.y < this.y - this.sprite.height) {
             this.sprite.y += this.sprite.speed }
