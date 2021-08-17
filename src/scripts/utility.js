@@ -58,6 +58,7 @@ class Utility {
     }
 
     orderCol(order1, order2) {
+
         if (this.collision(order1, order2)) {
             order2.blocked = true;
         }
@@ -101,11 +102,25 @@ class Utility {
 
         for (let i = 1; i < orderArr.length; i++) {
             orderArr[i].animate();
+            orderArr[i].blocked = false;
 
             if (orderArr.length > 1) {
                 this.orderCol(orderArr[i - 1], orderArr[i]);
             }
         }
+    }
+
+    getPaid(orderArr, pizzaArr, count) {
+        for (let i = 0; i < orderArr.length; i++) {
+            let order = orderArr[i];
+            if (order.type === pizzaArr[count].type) {
+                orderArr.splice(i, 1);
+                pizzaArr.shift();
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

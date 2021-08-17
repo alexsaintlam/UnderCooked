@@ -39,13 +39,6 @@ class Checkout {
             this.sprite.frameY = 0;
         }
     }
-
-    getPaid(e) {
-        if (e.keyCode === 32) {
-            this.scoreArr.push(10);
-            return true;
-        }
-    }
 }
 
 export default Checkout;

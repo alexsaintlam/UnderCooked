@@ -190,7 +190,7 @@ class UnderCooked {
                 this.breadCount += 1;
                 this.pepperoniCount += 1;
                 setTimeout(function() {
-                    that.pizzaArr.push(new Pizza(that.dimensions, that.ctx));
+                    that.pizzaArr.push(new Pizza(that.dimensions, that.ctx, that.oven.cookingItems[0]));
                     that.oven.cookingItems.shift();}, 7000);
             } else if ((this.utility.collision(this.oven, this.plateArr[this.plateCount]) &&
                     !this.plateArr[this.plateCount].contents.includes("cheese") && 
@@ -224,11 +224,17 @@ class UnderCooked {
         }
 
         if (this.pizzaArr.length > 0) {
-            if (this.utility.collision(this.pizzaArr[this.pizzaCount], this.checkout)) {
-                if (this.checkout.getPaid(e)) {
-                    this.orderArr.shift();
-                    this.pizzaArr.shift();
+            if (this.utility.collision(this.pizzaArr[this.pizzaCount], this.checkout) &&
+                e.keyCode === 32) {
+                if (this.utility.getPaid(this.orderArr, this.pizzaArr, this.pizzaCount, this)) {
+                   
+                    // this.orderArr.shift();
+                    // this.pizzaArr.shift();
+                    this.checkout.scoreArr.push(10);
                     this.score();
+                    this.character.pickedStatus = false;
+                } else {
+                    this.pizzaArr.shift();
                     this.character.pickedStatus = false;
                 }
             }

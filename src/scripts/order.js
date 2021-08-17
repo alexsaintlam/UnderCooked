@@ -20,10 +20,12 @@ class Order {
         };
 
         this.blocked = false;
+        this.imgType = "";
         this.type = "plain";
         this.random();
+        this.convertType();
         this.orderSprite = new Image();
-        this.orderSprite.src = `${this.type}`;
+        this.orderSprite.src = this.imgType; 
     }
 
     animate() {
@@ -49,9 +51,17 @@ class Order {
     random() {
         const randomNum = Math.floor(Math.random() * 2);
         if (randomNum === 0) {
-            this.type = pep;
+            this.imgType = pep;
         } else {
-            this.type = plain;
+            this.imgType = plain;
+        }
+    }
+
+    convertType() {
+        if (this.imgType === pep) {
+            this.type = "pep";
+        } else if (this.imgType === plain) {
+            this.type = "plain"
         }
     }
 }

@@ -1,7 +1,7 @@
 import pizzaImg from "/src/images/plate2.png";
 
 class Pizza {
-    constructor(dimensions, ctx) {
+    constructor(dimensions, ctx, type) {
         this.ctx = ctx;
         this.dimensions = dimensions;
         this.x = this.dimensions.width;
@@ -15,7 +15,7 @@ class Pizza {
             speed: 8,
         };
 
-        this.type = "plain";
+        this.type = type;
         this.pickedStatus = false;
         this.pickedCount = 0;
         this.visible = false;
