@@ -1,5 +1,5 @@
-import pep from "../images/cookie.png";
-import plain from "../images/avocado.png";
+import pep from "../images/pep.png";
+import plain from "../images/plain.png";
 
 class Order {
     constructor(dimensions, ctx) {
@@ -9,10 +9,10 @@ class Order {
         this.y = this.dimensions.height - 25;
 
         this.sprite = {
-            x: 68,
+            x: 72,
             y: 0,
-            width: 16,
-            height: 20,
+            width: 18,
+            height: 16,
             frameX: 0,
             frameY: 0,
             speed: 1,

@@ -1,3 +1,14 @@
+/* @font-face {
+    font-family: 'silkScreen';
+    src: url("../fonts/silkscreen_normal_macroman/slkscr-webfont.woff") format("woff");
+}
+
+* {
+    font-family: 'silkScreen';
+    font-size: 35px;
+} */
+
+
 #canvas1 {
     width: 172;
     height: 133;
