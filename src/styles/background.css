@@ -11,7 +11,7 @@
 #canvas1 {
     width: 172;
     height: 133;
-    zoom: 300%
+    zoom: 300%;
 }
 
 body {
@@ -42,6 +42,7 @@ div {
     display: block;
     position: absolute;
     border: thin solid black;
+    color: white;
     padding: .2em;
     text-align: left;
     background-color: rgb(128, 56, 128);
@@ -52,15 +53,20 @@ div {
 .instructions-modal {
     display: none;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
     border: thin solid black;
     padding: .2em;
     text-align: left;
     background-color: rgb(128, 56, 128);
+    opacity: 0.85
 }
 
 .top-instruct:hover .instructions-modal {
     display: block;
-    place-items: center;
+    
 }
 
 li {

@@ -1,4 +1,6 @@
 import player from "../images/chef.png";
+import Sound from "./sound";
+import SwipeSound from "/src/sounds/swipe.mp3";
 
 class Character {
     constructor(dimensions, ctx) {
@@ -18,6 +20,7 @@ class Character {
             startPos: 0
         };
 
+        this.swipeSound = new Sound(SwipeSound);
         this.pickedStatus = false;
         this.key = [];
 
@@ -78,6 +81,7 @@ class Character {
 
     pickedUp(e) {
         if (e.keyCode === 32 && this.pickedStatus === false) {
+            this.swipeSound.play();
             this.pickedStatus = true;
         } else if (e.keyCode === 32 && this.pickedStatus === true) {
             this.pickedStatus = false;

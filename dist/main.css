@@ -13,7 +13,10 @@
 #canvas1 {
   width: 172;
   height: 133;
+  border-radius: 3px;
+  border: solid #803880;
   zoom: 300%;
+  visibility: hidden;
 }
 
 body {
@@ -43,7 +46,9 @@ div {
 #greet {
   display: block;
   position: absolute;
+  border-radius: 7px;
   border: thin solid black;
+  color: white;
   padding: 0.2em;
   text-align: left;
   background-color: #803880;
@@ -54,15 +59,20 @@ div {
 .instructions-modal {
   display: none;
   position: absolute;
+  border-radius: 7px;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
   border: thin solid black;
   padding: 0.2em;
   text-align: left;
   background-color: #803880;
+  opacity: 0.85;
 }
 
 .top-instruct:hover .instructions-modal {
   display: block;
-  place-items: center;
 }
 
 li {

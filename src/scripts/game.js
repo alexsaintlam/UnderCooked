@@ -13,6 +13,11 @@ import Sauce from "./foods/sauce";
 import Angry from "./angry";
 import Checkout from "./checkout";
 import Order from "./order";
+import Sound from "./sound";
+import OvenSound from "/src/sounds/oven.mp3";
+import CheckoutSound from "/src/sounds/checkout.mp3";
+import DeniedSound from "/src/sounds/denied.mp3";
+import SizzleSound from "/src/sounds/sizzle.mp3";
 
 class UnderCooked {
     constructor(canvas) {
@@ -62,7 +67,9 @@ class UnderCooked {
         this.initialStart = true;
         this.gameOver = false;
         
+        this.canvasId = document.getElementById("canvas1")
         this.resetId = document.getElementById("reset");
+        this.buttonsId = document.getElementById("buttons")
         this.instructionsId = document.getElementById("instructions");
         this.greetId = document.getElementById("greet");
         this.greetId.style.visibility = "visible"
@@ -70,6 +77,11 @@ class UnderCooked {
         this.resetId.hidden = true;
         this.startAnimate(13);
         this.registerEvents();   
+        this.ovenSound = new Sound(OvenSound);
+        this.checkoutSound = new Sound(CheckoutSound);
+        this.deniedSound = new Sound(DeniedSound);
+        this.sizzleSound = new Sound(SizzleSound);
+        this.sizzleSound.incVolume();
     }
 
     //ANIMATION
@@ -149,6 +161,7 @@ class UnderCooked {
         this.reset(e);
         this.character.keyDown(e);
         this.angry.keyDown(e);
+
         this.utility.charIngCollision(this.character, this.cheeseArr, this.cheeseCount, e);
         this.utility.charIngCollision(this.character, this.tomatoArr, this.tomatoCount, e);
         this.utility.charIngCollision(this.character, this.pepperoniArr, this.pepperoniCount, e);
@@ -203,6 +216,7 @@ class UnderCooked {
         if (this.utility.collision(this.oven, this.plateArr[this.plateCount])) {  
             if (this.oven.isCooking(e, this.plateArr[this.plateCount])) {
                 let that = this;
+                this.ovenSound.play();
                 this.character.pickedStatus = false;
                 this.plateArr[this.plateCount].sprite.x = 0;
                 this.plateArr[this.plateCount].sprite.y = 0;
@@ -223,6 +237,7 @@ class UnderCooked {
                     (this.utility.collision(this.oven, this.plateArr[this.plateCount]) &&
                     !this.plateArr[this.plateCount].contents.includes("bread") && 
                     e.keyCode === 32)) {
+                this.deniedSound.play();
                 this.angry.youMad();
             }
         }
@@ -230,6 +245,7 @@ class UnderCooked {
         if (this.utility.collision(this.stove, this.tomatoArr[this.tomatoCount])) {
             if (this.stove.isCooking(e)) {
                 let that = this;
+                this.sizzleSound.play();
                 this.character.pickedStatus = false;
                 this.tomatoArr[this.tomatoCount].sprite.x = 0;
                 this.tomatoArr[this.tomatoCount].sprite.y = 0;
@@ -249,10 +265,12 @@ class UnderCooked {
             if (this.utility.collision(this.pizzaArr[this.pizzaCount], this.checkout) &&
                 e.keyCode === 32) {
                 if (this.utility.getPaid(this.orderArr, this.pizzaArr, this.pizzaCount, this)) {
+                    this.checkoutSound.play();
                     this.checkout.scoreArr.push(10);
                     this.score();
                     this.character.pickedStatus = false;
                 } else {
+                    this.deniedSound.play();
                     this.pizzaArr.shift();
                     this.character.pickedStatus = false;
                 }
@@ -311,6 +329,7 @@ class UnderCooked {
             this.gameStatus = true;
             this.initialStart = false;
             this.greetId.style.visibility = "hidden"
+            this.canvasId.style.visibility = "visible"
         }
     }
 
