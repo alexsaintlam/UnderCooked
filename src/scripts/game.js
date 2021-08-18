@@ -45,7 +45,7 @@ class UnderCooked {
         this.plateCount = 0;
         this.pizzaCount = 0;
         this.sauceCount = 0;
-        this.time = 3;
+        this.time = 60;
         this.totalScore = 0;
 
         for (let i = 0; i < 15; i++) {
