@@ -122,6 +122,8 @@ class Utility {
 
         return false;
     }
+
+
 }
 
 export default Utility;

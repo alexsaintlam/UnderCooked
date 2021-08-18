@@ -41,6 +41,7 @@ class UnderCooked {
         this.pizzaCount = 0;
         this.sauceCount = 0;
         this.time = 60;
+        this.totalScore = 0;
 
         for (let i = 0; i < 15; i++) {
             this.cheeseArr.push(new Cheese(this.dimensions, this.ctx)); 
@@ -56,13 +57,22 @@ class UnderCooked {
         this.now = "";
         this.then = "";
         this.elapsed = "";
-        this.gameStatus = true;
+        this.gameStatus = false;
+        this.started = [];
+        this.initialStart = true;
+        this.gameOver = false;
+        
+        this.resetId = document.getElementById("reset");
+        this.instructionsId = document.getElementById("instructions");
+        this.greetId = document.getElementById("greet");
+        this.greetId.style.visibility = "visible"
+        this.instructionsId.hidden = true;
+        this.resetId.hidden = true;
         this.startAnimate(13);
-        this.registerEvents();
-        this.score();
-        setInterval(this.timer.bind(this), 1000);
-        setInterval(this.createOrder.bind(this), 8000);
+        this.registerEvents();   
     }
+
+    //ANIMATION
 
     startAnimate(fps) {
         this.fpsInterval = 1000 / fps;
@@ -72,13 +82,20 @@ class UnderCooked {
     }
 
     animate() {
-        if (!this.gameStatus) {
-            if (window.confirm(`You scored ${document.getElementById("score").innerText} points!  Press Ok to restart.`)) {
-                location.reload();
+        if (this.initialStart && !this.gameStatus) {
+            // this.initial.animate();
+            requestAnimationFrame(this.animate.bind(this));
+        } else if (!this.initialStart && !this.gameStatus) {
+            requestAnimationFrame(this.animate.bind(this));
+        } else {
+            this.resetId.hidden = false;
+            this.instructionsId.hidden = false;
+            if (this.started.length < 1) {
+                this.started.push("started");
+                this.score();
+                setInterval(this.timer.bind(this), 1000);
+                setInterval(this.createOrder.bind(this), 8000);
             }
-        }
-
-        if (this.gameStatus) {
 
             requestAnimationFrame(this.animate.bind(this));
             this.now = Date.now();
@@ -87,7 +104,7 @@ class UnderCooked {
             if (this.elapsed > this.fpsInterval) {
                 this.then = this.now - (this.elapsed % this.fpsInterval);
                 this.ctx.clearRect(0, 0, this.dimensions.width, this.dimensions.height);
-                document.getElementById("timer").innerText = this.time;
+                document.getElementById("timer").innerText = `Time: ${this.time}`;
                 this.level.animate();
                 this.stove.animate();
                 this.oven.animate();
@@ -119,12 +136,17 @@ class UnderCooked {
         }
     }
 
+    //KEY DETECTION
+
     registerEvents() {
-        window.addEventListener("keydown", this.keyDownHandler.bind(this))
-        window.addEventListener("keyup", this.keyUpHandler.bind(this))
+        window.addEventListener("keydown", this.keyDownHandler.bind(this));
+        window.addEventListener("keyup", this.keyUpHandler.bind(this));
+        this.resetId.addEventListener("mousedown", this.reset.bind(this));
     }
 
     keyDownHandler(e) {
+        this.start(e);
+        this.reset(e);
         this.character.keyDown(e);
         this.angry.keyDown(e);
         this.utility.charIngCollision(this.character, this.cheeseArr, this.cheeseCount, e);
@@ -227,9 +249,6 @@ class UnderCooked {
             if (this.utility.collision(this.pizzaArr[this.pizzaCount], this.checkout) &&
                 e.keyCode === 32) {
                 if (this.utility.getPaid(this.orderArr, this.pizzaArr, this.pizzaCount, this)) {
-                   
-                    // this.orderArr.shift();
-                    // this.pizzaArr.shift();
                     this.checkout.scoreArr.push(10);
                     this.score();
                     this.character.pickedStatus = false;
@@ -259,18 +278,22 @@ class UnderCooked {
         }
     }
 
+    //LEVEL FUNCTIONS
+
     score() {
         const sum = this.checkout.scoreArr.reduce((acc, ele) => 
             {return acc + ele}, 0);
 
         const scoreId = document.getElementById("score");
-        scoreId.innerText = sum;
+        scoreId.innerText = `Score: ${sum}`;
+        this.totalScore = sum;
     }
 
     timer() {
         if (this.time > 0) {
             this.time -= 1;
         } else if (this.time < 1) {
+            this.gameOverMsg();
             this.gameStatus = false; 
         }
     }
@@ -279,6 +302,57 @@ class UnderCooked {
         if (this.orderArr.length < 5) {
             this.orderArr.push(new Order(this.dimensions, this.ctx));
         }
+    }
+
+    //START AND REESET FUNCTIONS
+
+    start(e) {
+        if (e.keyCode === 13 && this.gameStatus === false) {
+            this.gameStatus = true;
+            this.initialStart = false;
+            this.greetId.style.visibility = "hidden"
+        }
+    }
+
+    reset(e) {
+        if(e.type === "mousedown") {
+            this.cheeseArr = [];
+            this.tomatoArr = [];
+            this.pepperoniArr = [];
+            this.breadArr = [];
+            this.plateArr = [];
+            this.pizzaArr = [];
+            this.sauceArr = [];
+            this.orderArr = [new Order(this.dimensions, this.ctx)];
+            this.cheeseCount = 0;
+            this.tomatoCount = 0;
+            this.pepperoniCount = 0;
+            this.breadCount = 0;
+            this.plateCount = 0;
+            this.pizzaCount = 0;
+            this.sauceCount = 0;
+            this.time = 60;
+    
+            for (let i = 0; i < 15; i++) {
+                this.cheeseArr.push(new Cheese(this.dimensions, this.ctx)); 
+                this.tomatoArr.push(new Tomato(this.dimensions, this.ctx));
+                this.pepperoniArr.push(new Pepperoni(this.dimensions, this.ctx));
+                this.breadArr.push(new Bread(this.dimensions, this.ctx));
+                this.plateArr.push(new Plate(this.dimensions, this.ctx))
+            }
+
+            this.gameStatus = true;
+        }
+    }
+
+    gameOverMsg() {
+            this.ctx.fillStyle = 'rgb(128, 56, 128)';
+            this.ctx.fillRect(25, 27, 125, 40)
+            this.ctx.fillStyle = 'white'
+            this.ctx.fillText("Time Is Up!", 60, 40);
+            this.ctx.fillText(`You Scored ${this.totalScore} Points`, 42, 50);
+            this.ctx.fillText("Press Reset to Play Again", 30, 60);
+        
     }
 }
 

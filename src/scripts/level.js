@@ -1,4 +1,4 @@
-import background from "../images/background1.png";
+import background from "../images/background2.png";
 
 class Level {
     constructor(dimensions, ctx) {

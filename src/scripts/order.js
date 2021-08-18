@@ -5,14 +5,14 @@ class Order {
     constructor(dimensions, ctx) {
         this.ctx = ctx;
         this.dimensions = dimensions;
-        this.x = this.dimensions.width + 15;
-        this.y = this.dimensions.height - 25;
+        this.x = this.dimensions.width;
+        this.y = this.dimensions.height;
 
         this.sprite = {
             x: 72,
             y: 0,
-            width: 18,
-            height: 16,
+            width: 15,
+            height: 14,
             frameX: 0,
             frameY: 0,
             speed: 1,

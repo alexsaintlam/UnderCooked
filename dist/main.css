@@ -1,38 +1,72 @@
 /*!************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/styles/background.css ***!
   \************************************************************************************************************************************************/
-/* @font-face {
-    font-family: 'silkScreen';
-    src: url("../fonts/silkscreen_normal_macroman/slkscr-webfont.woff") format("woff");
+@font-face {
+  font-family: "silkScreen";
+  src: url(e2940cc1c6ebae46bc13.woff) format("woff");
+}
+* {
+  font-family: "silkScreen";
+  font-size: 15px;
 }
 
-* {
-    font-family: 'silkScreen';
-    font-size: 35px;
-} */
 #canvas1 {
   width: 172;
   height: 133;
-  border: 1px solid black;
   zoom: 300%;
 }
 
 body {
-  display: grid;
+  display: flex;
   place-items: center;
+  justify-content: center;
   min-height: 90vh;
+  flex-direction: column;
+  background: url(bca301635408d708936e.png) center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 #score {
-  position: absolute;
-  top: 24.3%;
-  left: 61.8%;
+  font-size: 20px;
 }
 
 #timer {
+  font-size: 20px;
+}
+
+div {
+  display: flex;
+  gap: 1rem;
+}
+
+#greet {
+  display: block;
   position: absolute;
-  top: 24.3%;
-  left: 54%;
+  border: thin solid black;
+  padding: 0.2em;
+  text-align: left;
+  background-color: #803880;
+  visibility: hidden;
+  opacity: 0.7;
+}
+
+.instructions-modal {
+  display: none;
+  position: absolute;
+  border: thin solid black;
+  padding: 0.2em;
+  text-align: left;
+  background-color: #803880;
+}
+
+.top-instruct:hover .instructions-modal {
+  display: block;
+  place-items: center;
+}
+
+li {
+  list-style-type: none;
 }
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
