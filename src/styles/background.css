@@ -59,6 +59,7 @@ table {
 }
 
 .title {
+    font-family: 'silkScreen';
     display: flex;
     font-size: 40px;
     color: white;
@@ -74,6 +75,7 @@ table {
 }
 
 body {
+    font-family: 'silkScreen';
     display: flex;
     place-items: center;
     justify-content: center;
