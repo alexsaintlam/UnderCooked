@@ -10,7 +10,41 @@
     <title>OverBaked</title>
 </head>
 
-<body >
+<h1 class="title">Overbaked</h1>
+
+
+<body>
+    <div class="buttons">
+        <div class="linked-hover"><button id="linked">Linked In</button></div>
+        <div class="git-hover">
+            <a href="https://github.com/alexsaintlam"><button id="git">Github</button></a>
+        </div>
+        <div class= "top-instruct">
+            <button id="instructions">instructions</button>
+                <div class= "instructions-modal">
+                    <li>We can cook a pizza by placing</li>
+                    <li>ingredients on the plate and</li>
+                    <li>putting the plate into the oven</li>
+                    <p></p>
+                    <li>Plain pizza ingredients include:</li>
+                    <li>   bread, cheese, and sauce</li>
+                    <li>Pepperoni pizza ingredients include:</li>
+                    <li>   bread, cheese, sauce, and pepperoni</li>
+                    <li>To make tomato sauce:</li>
+                    <li>   place the tomato in the pot</li>
+                    <p></p>
+                    <li>Be quick, you have 60 seconds!</li>
+                    <p></p>
+                    <li>Controls</li>
+                    <li>"W" to move up</li>
+                    <li>"A" to move left</li>
+                    <li>"S" to move down</li>
+                    <li>"D" to move right</li>
+                    <li>"Space" to pick-up/place objects</li>
+                </div>
+        </div>
+        <div class="id-hover"><button id="reset">reset</button></div>
+    </div>
     <div id= "greet">
         <h1>Welcome to OverBaked!</h1>
         <li>Your pizza has gone viral and there</li>
@@ -39,40 +73,17 @@
         <p></p>
         <li>Hit Enter To Begin!</li>
     </div>
-    <div id= "buttons">
-        <button>Linked In</button>
-        <button>Github</button>
-        <div class= "top-instruct">
-            <button id="instructions">instructions</button>
-                <div class= "instructions-modal">
-                    <li>We can cook a pizza by placing</li>
-                    <li>ingredients on the plate and</li>
-                    <li>putting the plate into the oven</li>
-                    <p></p>
-                    <li>Plain pizza ingredients include:</li>
-                    <li>   bread, cheese, and sauce</li>
-                    <li>Pepperoni pizza ingredients include:</li>
-                    <li>   bread, cheese, sauce, and pepperoni</li>
-                    <li>To make tomato sauce:</li>
-                    <li>   place the tomato in the pot</li>
-                    <p></p>
-                    <li>Be quick, you have 60 seconds!</li>
-                    <p></p>
-                    <li>Controls</li>
-                    <li>"W" to move up</li>
-                    <li>"A" to move left</li>
-                    <li>"S" to move down</li>
-                    <li>"D" to move right</li>
-                    <li>"Space" to pick-up/place objects</li>
-                </div>
-        </div>
-            
-        <button id="reset">reset</button>
-    </div>
     <div class= "time-score">
         <h3 id="timer"></h3>
         <h3 id="score"></h3>
     </div>
+
+    <div id="gameover">
+        <li>Time Is Up!</li>
+        <li id="score-over"></li>
+        <li>Press Reset Above to Play Again</li>
+    </div>
+    
     <canvas id="canvas1" height="133" width="172"></canvas>
 
 </body>

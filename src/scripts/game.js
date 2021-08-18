@@ -45,7 +45,7 @@ class UnderCooked {
         this.plateCount = 0;
         this.pizzaCount = 0;
         this.sauceCount = 0;
-        this.time = 60;
+        this.time = 3;
         this.totalScore = 0;
 
         for (let i = 0; i < 15; i++) {
@@ -72,6 +72,8 @@ class UnderCooked {
         this.buttonsId = document.getElementById("buttons")
         this.instructionsId = document.getElementById("instructions");
         this.greetId = document.getElementById("greet");
+        this.gameOverId = document.getElementById("gameover");
+        this.scoreOverId = document.getElementById("score-over");
         this.greetId.style.visibility = "visible"
         this.instructionsId.hidden = true;
         this.resetId.hidden = true;
@@ -95,7 +97,6 @@ class UnderCooked {
 
     animate() {
         if (this.initialStart && !this.gameStatus) {
-            // this.initial.animate();
             requestAnimationFrame(this.animate.bind(this));
         } else if (!this.initialStart && !this.gameStatus) {
             requestAnimationFrame(this.animate.bind(this));
@@ -311,7 +312,8 @@ class UnderCooked {
         if (this.time > 0) {
             this.time -= 1;
         } else if (this.time < 1) {
-            this.gameOverMsg();
+            this.scoreOverId.innerText = `You scored ${this.totalScore} points!`
+            this.gameOverId.style.visibility = "visible"
             this.gameStatus = false; 
         }
     }
@@ -360,19 +362,10 @@ class UnderCooked {
                 this.plateArr.push(new Plate(this.dimensions, this.ctx))
             }
 
+            this.gameOverId.style.visibility = "hidden"
             this.gameStatus = true;
         }
-    }
-
-    gameOverMsg() {
-            this.ctx.fillStyle = 'rgb(128, 56, 128)';
-            this.ctx.fillRect(25, 27, 125, 40)
-            this.ctx.fillStyle = 'white'
-            this.ctx.fillText("Time Is Up!", 60, 40);
-            this.ctx.fillText(`You Scored ${this.totalScore} Points`, 42, 50);
-            this.ctx.fillText("Press Reset to Play Again", 30, 60);
-        
-    }
+    } 
 }
 
 export default UnderCooked;

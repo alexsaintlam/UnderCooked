@@ -10,10 +10,16 @@
   font-size: 15px;
 }
 
+.title {
+  display: flex;
+  font-size: 40px;
+  color: white;
+}
+
 #canvas1 {
   width: 172;
   height: 133;
-  border-radius: 3px;
+  border-radius: 4px;
   border: solid #803880;
   zoom: 300%;
   visibility: hidden;
@@ -32,10 +38,12 @@ body {
 
 #score {
   font-size: 20px;
+  color: white;
 }
 
 #timer {
   font-size: 20px;
+  color: white;
 }
 
 div {
@@ -46,8 +54,9 @@ div {
 #greet {
   display: block;
   position: absolute;
-  border-radius: 7px;
+  top: 32%;
   border: thin solid black;
+  border-radius: 10px;
   color: white;
   padding: 0.2em;
   text-align: left;
@@ -56,10 +65,25 @@ div {
   opacity: 0.7;
 }
 
+#gameover {
+  display: block;
+  position: absolute;
+  top: 50%;
+  border: thin solid black;
+  border-radius: 10px;
+  color: white;
+  padding: 0.2em;
+  text-align: left;
+  background-color: #803880;
+  visibility: hidden;
+  opacity: 0.7;
+  font-size: 30px;
+}
+
 .instructions-modal {
   display: none;
   position: absolute;
-  border-radius: 7px;
+  border-radius: 10px;
   top: 50%;
   left: 50%;
   color: white;
@@ -73,6 +97,26 @@ div {
 
 .top-instruct:hover .instructions-modal {
   display: block;
+}
+
+.top-instruct:hover #instructions {
+  background-color: #803880;
+  color: white;
+}
+
+.id-hover:hover #reset {
+  background-color: #803880;
+  color: white;
+}
+
+.linked-hover:hover #linked {
+  background-color: #803880;
+  color: white;
+}
+
+.git-hover:hover #git {
+  background-color: #803880;
+  color: white;
 }
 
 li {
