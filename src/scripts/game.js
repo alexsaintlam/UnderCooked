@@ -18,6 +18,7 @@ import OvenSound from "/src/sounds/oven.mp3";
 import CheckoutSound from "/src/sounds/checkout.mp3";
 import DeniedSound from "/src/sounds/denied.mp3";
 import SizzleSound from "/src/sounds/sizzle.mp3";
+import StartgameSound from "/src/sounds/start.mp3";
 
 class UnderCooked {
     constructor(canvas) {
@@ -85,6 +86,8 @@ class UnderCooked {
         this.deniedSound = new Sound(DeniedSound);
         this.sizzleSound = new Sound(SizzleSound);
         this.sizzleSound.incVolume();
+        this.startSound = new Sound(StartgameSound);
+        this.startSound.incVolume();
     }
 
     //ANIMATION
@@ -318,6 +321,7 @@ class UnderCooked {
         if (e.keyCode === 13 && this.gameStatus === false) {
             this.gameStatus = true;
             this.initialStart = false;
+            this.startSound.play();
             this.greetId.style.visibility = "hidden"
             this.canvasId.style.visibility = "visible"
         }
@@ -352,6 +356,7 @@ class UnderCooked {
 
             this.gameOverId.style.visibility = "hidden"
             this.gameStatus = true;
+            this.startSound.play();
         }
     } 
 }
