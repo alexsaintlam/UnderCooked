@@ -29,6 +29,10 @@ Technologies, Libraries, APIs
 * Animate to create animation effects
 * Webpack to bundle JavaScript
 
+Image and Sounds Credits
+*Modern Interiors by limezu.pixel@gmail.com
+*FreePixelFood by benmhenry@gmail.com & davidahenry@gmail.com
+
 Implementation Timeline
 * Friday & Weekend: Setup project with webpack and canvas, get animation of sprites rendered, have sprites move with keypresses
 * Monday: Create methods for cooking times, have food start cooking with oven
@@ -39,4 +43,6 @@ Implementation Timeline
 Bonus Functionality
 * Incorporate option to change map
 * Incorporate option to include different foods
+
+
 
