@@ -18,7 +18,7 @@ import OvenSound from "/src/sounds/oven.mp3";
 import CheckoutSound from "/src/sounds/checkout.mp3";
 import DeniedSound from "/src/sounds/denied.mp3";
 import SizzleSound from "/src/sounds/sizzle.mp3";
-import StartgameSound from "/src/sounds/start.mp3";
+import StartgameSound from "/src/sounds/battlefull.mp3";
 
 class UnderCooked {
     constructor(canvas) {
@@ -87,7 +87,7 @@ class UnderCooked {
         this.sizzleSound = new Sound(SizzleSound);
         this.sizzleSound.incVolume();
         this.startSound = new Sound(StartgameSound);
-        this.startSound.incVolume();
+        this.startSound.decVolume();
     }
 
     //ANIMATION
