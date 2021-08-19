@@ -61,7 +61,7 @@ table {
 .title {
     font-family: 'silkScreen';
     display: flex;
-    font-size: 40px;
+    font-size: 50px;
     color: white;
 }
 
@@ -123,7 +123,7 @@ div {
     border-radius: 10px;
     color: white;
     padding: .2em;
-    text-align: left;
+    text-align: center;
     background-color: rgb(128, 56, 128);
     visibility: hidden;
     opacity: 0.7;

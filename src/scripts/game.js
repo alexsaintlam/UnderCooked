@@ -74,6 +74,7 @@ class UnderCooked {
         this.greetId = document.getElementById("greet");
         this.gameOverId = document.getElementById("gameover");
         this.scoreOverId = document.getElementById("score-over");
+        this.scoreId = document.getElementById("score");
         this.greetId.style.visibility = "visible"
         this.instructionsId.hidden = true;
         this.resetId.hidden = true;
@@ -105,7 +106,7 @@ class UnderCooked {
             this.instructionsId.hidden = false;
             if (this.started.length < 1) {
                 this.started.push("started");
-                this.score();
+                this.scoreId.innerText = `Score: ${this.totalScore}`
                 setInterval(this.timer.bind(this), 1000);
                 setInterval(this.createOrder.bind(this), 8000);
             }
@@ -267,8 +268,8 @@ class UnderCooked {
                 e.keyCode === 32) {
                 if (this.utility.getPaid(this.orderArr, this.pizzaArr, this.pizzaCount, this)) {
                     this.checkoutSound.play();
-                    this.checkout.scoreArr.push(10);
-                    this.score();
+                    this.totalScore += 10;
+                    this.scoreId.innerText = `Score: ${this.totalScore}`;
                     this.character.pickedStatus = false;
                 } else {
                     this.deniedSound.play();
@@ -297,17 +298,6 @@ class UnderCooked {
         }
     }
 
-    //LEVEL FUNCTIONS
-
-    score() {
-        const sum = this.checkout.scoreArr.reduce((acc, ele) => 
-            {return acc + ele}, 0);
-
-        const scoreId = document.getElementById("score");
-        scoreId.innerText = `Score: ${sum}`;
-        this.totalScore = sum;
-    }
-
     timer() {
         if (this.time > 0) {
             this.time -= 1;
@@ -323,8 +313,6 @@ class UnderCooked {
             this.orderArr.push(new Order(this.dimensions, this.ctx));
         }
     }
-
-    //START AND REESET FUNCTIONS
 
     start(e) {
         if (e.keyCode === 13 && this.gameStatus === false) {
