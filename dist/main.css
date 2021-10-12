@@ -87,9 +87,11 @@ body {
   justify-content: center;
   min-height: 90vh;
   flex-direction: column;
-  background: url(bca301635408d708936e.png) center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background: url(bca301635408d708936e.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #score {

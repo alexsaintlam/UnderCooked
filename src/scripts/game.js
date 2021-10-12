@@ -87,7 +87,6 @@ class UnderCooked {
         this.sizzleSound = new Sound(SizzleSound);
         this.sizzleSound.incVolume();
         this.startSound = new Sound(StartgameSound);
-        this.startSound.decVolume();
     }
 
     //ANIMATION
