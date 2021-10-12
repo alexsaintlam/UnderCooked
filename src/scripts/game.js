@@ -67,6 +67,7 @@ class UnderCooked {
         this.started = [];
         this.initialStart = true;
         this.gameOver = false;
+        this.soundStatus = "unmute";
         
         this.canvasId = document.getElementById("canvas1")
         this.resetId = document.getElementById("reset");
@@ -163,6 +164,7 @@ class UnderCooked {
     keyDownHandler(e) {
         this.start(e);
         this.reset(e);
+        this.mute(e);
         this.character.keyDown(e);
         this.angry.keyDown(e);
 
@@ -323,6 +325,24 @@ class UnderCooked {
             this.startSound.play();
             this.greetId.style.visibility = "hidden"
             this.canvasId.style.visibility = "visible"
+        }
+    }
+
+    mute(e) {
+        if (e.keyCode === 77 && this.soundStatus === "unmute") {
+            this.ovenSound.setVolume(0);
+            this.checkoutSound.setVolume(0);
+            this.deniedSound.setVolume(0);
+            this.sizzleSound.setVolume(0);
+            this.startSound.setVolume(0);
+            this.soundStatus = "mute";
+        } else if (e.keyCode === 77 && this.soundStatus === "mute") {
+            this.ovenSound.setVolume(0.1);
+            this.checkoutSound.setVolume(0.1);
+            this.deniedSound.setVolume(0.1);
+            this.sizzleSound.setVolume(0.1);
+            this.startSound.setVolume(0.1);
+            this.soundStatus = "unmute";
         }
     }
 
